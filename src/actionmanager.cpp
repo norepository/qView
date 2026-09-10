@@ -591,6 +591,14 @@ void ActionManager::actionTriggered(QAction *triggeredAction, MainWindow *releva
         relevantWindow->resetZoom();
     } else if (key == "originalsize") {
         relevantWindow->originalSize();
+    } else if (key == "panleft") {
+        relevantWindow->pan({ -1, 0 });
+    } else if (key == "pandown") {
+        relevantWindow->pan({ 0, 1 });
+    } else if (key == "panup") {
+        relevantWindow->pan({ 0, -1 });
+    } else if (key == "panright") {
+        relevantWindow->pan({ 1, 0 });
     } else if (key == "rotateright") {
         relevantWindow->rotateRight();
     } else if (key == "rotateleft") {
@@ -721,6 +729,16 @@ void ActionManager::initializeActionLibrary()
     auto *originalSizeAction = new QAction(QIcon::fromTheme("zoom-original"), tr("Ori&ginal Size"));
     originalSizeAction->setData({ "disable" });
     actionLibrary.insert("originalsize", originalSizeAction);
+
+    const QList<QPair<QString, QString>> panActions = { { "panleft", tr("Pan Left") },
+                                                       { "pandown", tr("Pan Down") },
+                                                       { "panup", tr("Pan Up") },
+                                                       { "panright", tr("Pan Right") } };
+    for (const auto &pan : panActions) {
+        auto *panAction = new QAction(pan.second);
+        panAction->setData({ "disable" });
+        actionLibrary.insert(pan.first, panAction);
+    }
 
     auto *rotateRightAction =
             new QAction(QIcon::fromTheme("object-rotate-right"), tr("Rotate &Right"));

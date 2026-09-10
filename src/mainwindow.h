@@ -81,6 +81,8 @@ public:
 
     void resetZoom();
 
+    void pan(const QPoint &direction);
+
     void originalSize();
 
     void rotateRight();

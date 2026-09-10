@@ -34,6 +34,8 @@ public:
 
     void zoom(qreal scaleFactor, const QPoint &pos = QPoint(-1, -1));
 
+    void pan(const QPoint &direction);
+
     void scaleExpensively();
     void makeUnscaled();
 
@@ -113,6 +115,8 @@ private:
     QGraphicsPixmapItem *loadedPixmapItem;
 
     constexpr static int MARGIN = -2;
+    // Keyboard pan step, as a fraction of the viewport size
+    constexpr static int PAN_DIVISOR = 8;
     constexpr static qreal MAX_EXPENSIVE_SCALING_SIZE = 3;
 
     // Set to too high a value to activate for now...

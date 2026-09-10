@@ -364,6 +364,16 @@ void QVGraphicsView::zoomOut(const QPoint &pos)
     zoom(qPow(qvGetSettingInt(ScaleFactor)/100.0 + 1, -1), pos);
 }
 
+void QVGraphicsView::pan(const QPoint &direction)
+{
+    const int x = direction.x() * (viewport()->width() / PAN_DIVISOR)
+            * (isRightToLeft() ? -1 : 1);
+    const int y = direction.y() * (viewport()->height() / PAN_DIVISOR);
+
+    horizontalScrollBar()->setValue(horizontalScrollBar()->value() + x);
+    verticalScrollBar()->setValue(verticalScrollBar()->value() + y);
+}
+
 void QVGraphicsView::zoom(qreal scaleFactor, const QPoint &pos)
 {
     // don't zoom too far out, dude

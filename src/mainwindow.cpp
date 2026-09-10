@@ -999,6 +999,11 @@ void MainWindow::resetZoom()
     graphicsView->resetScale();
 }
 
+void MainWindow::pan(const QPoint &direction)
+{
+    graphicsView->pan(direction);
+}
+
 void MainWindow::originalSize()
 {
     graphicsView->originalSize();

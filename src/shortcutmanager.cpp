@@ -126,6 +126,14 @@ void ShortcutManager::initializeShortcutsList()
                            "originalsize",
                            QStringList(QKeySequence(Qt::Key_O).toString()),
                            {} });
+    shortcutsList.append(
+            { tr("Pan Left"), "panleft", QStringList(QKeySequence(Qt::Key_H).toString()), {} });
+    shortcutsList.append(
+            { tr("Pan Down"), "pandown", QStringList(QKeySequence(Qt::Key_J).toString()), {} });
+    shortcutsList.append(
+            { tr("Pan Up"), "panup", QStringList(QKeySequence(Qt::Key_K).toString()), {} });
+    shortcutsList.append(
+            { tr("Pan Right"), "panright", QStringList(QKeySequence(Qt::Key_L).toString()), {} });
     shortcutsList.append({ tr("Rotate Right"),
                            "rotateright",
                            QStringList(QKeySequence(Qt::Key_Up).toString()),
